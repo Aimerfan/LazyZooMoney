@@ -3,6 +3,7 @@ package edu.fcumselab.lazyzoomoney;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -14,16 +15,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import static edu.fcumselab.lazyzoomoney.Register.db_name;
 import static edu.fcumselab.lazyzoomoney.Register.tb_name;
 
-public class Login extends Register {
+public class Login extends AppCompatActivity {
 
     EditText username, password;
     Toast tos2;
     TextView txv;
     String username_login = "";
+    SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
+        db = openOrCreateDatabase("User", Context.MODE_PRIVATE, null);
 
         tos2 = Toast.makeText(this, "", Toast.LENGTH_SHORT);
         username = (EditText) findViewById(R.id.username);
@@ -36,7 +41,7 @@ public class Login extends Register {
     public void loginbutton(View v)
     {
         int flag = 0;
-        Cursor c = db.rawQuery("SELECT * FROM " + tb_name, null);
+        Cursor c = db.rawQuery("SELECT * FROM " + "Account", null);
         String password_temp = "";
         if(c.moveToFirst())
         {
@@ -70,16 +75,16 @@ public class Login extends Register {
                 tos2.show();
             }
         }
-        /*if(flag == 5)
+        if(flag == 5)
         {
-            Intent it = new Intent(this, mappage.class);
-            it.setClass(login.this, mappage.class);
+            Intent it = new Intent(this, PersonalLedger.class);
+            it.setClass(Login.this, PersonalLedger.class);
             it.putExtra("使用者", username_login);
 
             startActivity(it);
             db.close();
 
-        }*/
+        }
 
         if(c.moveToFirst())
         {
@@ -91,7 +96,7 @@ public class Login extends Register {
                 str += "password: " + c.getString(1) + "\n";
                 str += "email: " + c.getString(2) + "\n";
             }while(c.moveToNext());
-            txv.setText(str);
+            //txv.setText(str);
         }
 
     }
@@ -101,4 +106,5 @@ public class Login extends Register {
         Intent it = new Intent(this, Register.class);
         startActivity(it);
     }
+
 }
