@@ -19,8 +19,8 @@ import static androidx.core.content.ContextCompat.startActivity;
 
 public class Register extends AppCompatActivity {
 
-    static final String db_name = "User";
-    static final String tb_name = "Account";
+    static final String db_name = "User"; // 資料庫名稱
+    static final String tb_name = "Account"; // 使用者帳號資料表名稱
     SQLiteDatabase db;
 
     EditText usernameR, passwordR, email;
@@ -30,18 +30,18 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
-        usernameR = (EditText) findViewById(R.id.usernameR);
-        passwordR = (EditText) findViewById(R.id.passwordR);
-        email = (EditText) findViewById(R.id.email);
-        tos = Toast.makeText(this, "", Toast.LENGTH_SHORT);
+        usernameR = (EditText) findViewById(R.id.usernameR); // 使用者名稱
+        passwordR = (EditText) findViewById(R.id.passwordR); // 密碼
+        email = (EditText) findViewById(R.id.email); // 信箱
+        tos = Toast.makeText(this, "", Toast.LENGTH_SHORT); // 提醒框
 
         db = openOrCreateDatabase(db_name, Context.MODE_PRIVATE, null);
-        String createTable = "CREATE TABLE IF NOT EXISTS " + tb_name + "(account VARCHAR(16), " + "password VARCHAR(16),"  + "email VARCHAR(64))";
+        String createTable = "CREATE TABLE IF NOT EXISTS " + tb_name + "(account VARCHAR(16), " + "password VARCHAR(16),"  + "email VARCHAR(64))"; // 建立資料表欄位
         db.execSQL(createTable);
 
     }
 
-    private void addData(String account, String password, String email)
+    private void addData(String account, String password, String email) // 將資料加入資料表
     {
         ContentValues cv = new ContentValues(3);
         cv.put("account", account);
@@ -49,14 +49,14 @@ public class Register extends AppCompatActivity {
         cv.put("email", email);
 
 
-        db.insert("Account", null, cv);
+        db.insert("Account", null, cv); // 插入資料
 
     }
-    public void registerbutton(View v)
+    public void registerbutton(View v) // 註冊按鈕
     {
-        String pattern = "^.*@gmail.com$";
+        String pattern = "^.*@gmail.com$"; // 判斷是否為信箱格式
         int flag = 0;
-        Cursor c = db.rawQuery("SELECT * FROM " + tb_name, null);
+        Cursor c = db.rawQuery("SELECT * FROM " + tb_name, null); // 搜尋資料表內容
         if(usernameR.getText().toString().isEmpty())
         {
             tos.setText("用戶名為必填欄位");
@@ -110,9 +110,9 @@ public class Register extends AppCompatActivity {
         }
         if(flag == 3)
         {
-            addData(usernameR.getText().toString(), passwordR.getText().toString(), email.getText().toString());
+            addData(usernameR.getText().toString(), passwordR.getText().toString(), email.getText().toString()); // 加入資料表
             c = db.rawQuery("SELECT * FROM " + tb_name, null);
-            if(c.getCount() == 0)
+            /*if(c.getCount() == 0)
             {
                 addData(usernameR.getText().toString(), passwordR.getText().toString(), email.getText().toString());
                 c = db.rawQuery("SELECT * FROM " + tb_name, null);
@@ -128,10 +128,10 @@ public class Register extends AppCompatActivity {
                     str += "password: " + c.getString(1) + "\n";
                     str += "email: " + c.getString(2) + "\n";
                 }while(c.moveToNext());
-            }
+            }*/
             tos.setText("註冊成功");
             tos.show();
-            Intent it = new Intent(this, Login.class);
+            Intent it = new Intent(this, Login.class); // 頁面跳轉
             startActivity(it);
             usernameR.setText(null);
             passwordR.setText(null);
