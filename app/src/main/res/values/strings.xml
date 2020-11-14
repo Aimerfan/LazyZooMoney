@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">LazyZooMoney</string>
+    <string-array name="walletKind">
+        <item>現金</item>
+        <item>卡片</item>
+        <item>銀行</item>
+    </string-array>
+    <string-array name="walletIcon">
+        <item>現</item>
+        <item>卡</item>
+        <item>銀</item>
+    </string-array>
+    <string-array name="walletMoney">
+        <item>300</item>
+        <item>600</item>
+        <item>900</item>
+    </string-array>
 </resources>

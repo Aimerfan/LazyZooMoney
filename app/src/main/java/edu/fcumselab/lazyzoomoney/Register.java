@@ -17,7 +17,8 @@ import android.widget.Toast;
 import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 import static androidx.core.content.ContextCompat.startActivity;
 
-public class Register extends AppCompatActivity {
+public class Register extends AppCompatActivity
+{
 
     static final String db_name = "User"; // 資料庫名稱
     static final String tb_name = "Account"; // 使用者帳號資料表名稱
@@ -27,7 +28,8 @@ public class Register extends AppCompatActivity {
     Toast tos;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
         usernameR = (EditText) findViewById(R.id.usernameR); // 使用者名稱
@@ -52,6 +54,7 @@ public class Register extends AppCompatActivity {
         db.insert("Account", null, cv); // 插入資料
 
     }
+
     public void registerbutton(View v) // 註冊按鈕
     {
         String pattern = "^.*@gmail.com$"; // 判斷是否為信箱格式
@@ -139,13 +142,6 @@ public class Register extends AppCompatActivity {
             db.close();
         }
 
-
-
-
-
-
-
     }
-
 
 }

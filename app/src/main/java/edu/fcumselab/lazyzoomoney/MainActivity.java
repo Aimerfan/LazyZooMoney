@@ -18,31 +18,37 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_register;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        btn_login = (Button) findViewById(R.id.login);
-        btn_register = (Button) findViewById(R.id.register);
-
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent login = new Intent();
-                login.setClass(MainActivity.this, Login.class);
-                startActivity(login);
-                MainActivity.this.finish();
-            }
-        });
-
-        btn_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent register = new Intent(MainActivity.this, Register.class);
-                startActivity(register);
-
-            }
-        });
     }
 
+    // 點選 "登入" 開啟登入頁
+    public void btn_login(View v)
+    {
+        Intent it = new Intent(this, Login.class);
+        startActivity(it);
+    }
+
+    // 點選 "註冊" 開啟註冊頁
+    public void btn_register(View v)
+    {
+        Intent it = new Intent(this, Register.class);
+        startActivity(it);
+    }
+
+    // 點選 "錢包" 開啟我的錢包 (測試用)
+    public void btn_wallet(View v)
+    {
+        Intent it = new Intent(this, Wallet.class);
+        startActivity(it);
+    }
+
+    // 點選 "新增錢包" 開啟新增錢包頁面 (測試用)
+    public void btn_addwallet(View v)
+    {
+        Intent it = new Intent(this, AddWallet.class);
+        startActivity(it);
+    }
 }
