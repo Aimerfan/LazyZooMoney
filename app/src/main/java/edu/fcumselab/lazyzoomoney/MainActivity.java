@@ -11,8 +11,8 @@ import com.facebook.stetho.Stetho;
 
 import static edu.fcumselab.lazyzoomoney.Register.db_name;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity
+{
     private Button btn_login;
     private Button btn_register;
 

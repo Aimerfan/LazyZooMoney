@@ -10,13 +10,13 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Wallet extends AppCompatActivity// implements WalletAdapter.OnItemClickListener, WalletAdapter.OnItemLongClickListener
 {
-
     private static final String db_name = "LazyZooMoney.db";
     private static final String tb_name = "Wallet";
     SQLiteDatabase db;
