@@ -1,27 +1,22 @@
 package edu.fcumselab.lazyzoomoney;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
-import static androidx.core.content.ContextCompat.startActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Register extends AppCompatActivity
 {
 
-    static final String db_name = "User"; // 資料庫名稱
-    static final String tb_name = "Account"; // 使用者帳號資料表名稱
+    static final String db_name = "LazyZooMoney.db";
+    static final String tb_name = "Account";
     SQLiteDatabase db;
 
     EditText usernameR, passwordR, email;

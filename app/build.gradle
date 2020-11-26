@@ -40,4 +40,5 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     // noinspection GradleCompatible
     implementation 'com.android.support:recyclerview-v7:29.0.0'
+    implementation 'com.facebook.stetho:stetho:1.5.1'
 }
