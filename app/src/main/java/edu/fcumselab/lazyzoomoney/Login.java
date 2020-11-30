@@ -35,7 +35,7 @@ public class Login extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         db = openOrCreateDatabase(db_name, Context.MODE_PRIVATE, null);
         txv = (TextView) findViewById(R.id.txv);
-
+        showAccount();
     }
 
     public void loginbutton(View v)
@@ -85,20 +85,6 @@ public class Login extends AppCompatActivity {
             db.close();
 
         }
-
-        if(c.moveToFirst())
-        {
-            String str = "總共有" + c.getCount() + "筆資料\n";
-            str += "-----\n";
-
-            do{
-                str += "account: " + c.getString(0) + "\n";
-                str += "password: " + c.getString(1) + "\n";
-                str += "email: " + c.getString(2) + "\n";
-            }while(c.moveToNext());
-            //txv.setText(str);
-        }
-
     }
 
     public void gotoregistered(View v)
@@ -107,4 +93,19 @@ public class Login extends AppCompatActivity {
         startActivity(it);
     }
 
+    private void showAccount() {
+        Cursor c = db.rawQuery("SELECT * FROM " + "Account", null);
+        if (c.moveToFirst()) {
+            String str = "總共有" + c.getCount() + "筆資料\n";
+            str += "-----\n";
+
+            do {
+                str += "account: " + c.getString(0) + "\n";
+                str += "password: " + c.getString(1) + "\n";
+                str += "email: " + c.getString(2) + "\n";
+            } while (c.moveToNext());
+
+            txv.setText(str);
+        }
+    }
 }
