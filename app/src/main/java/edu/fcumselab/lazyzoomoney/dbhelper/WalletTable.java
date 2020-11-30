@@ -27,7 +27,7 @@ public class WalletTable
                     COMMENT_COLUMN + " VARCHAR(256)" +
                     ");";
 
-    private SQLiteDatabase db;
+    public SQLiteDatabase db;
 
     public WalletTable(Context context)
     {

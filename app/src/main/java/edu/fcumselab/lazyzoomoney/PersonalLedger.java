@@ -1,46 +1,59 @@
 package edu.fcumselab.lazyzoomoney;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static edu.fcumselab.lazyzoomoney.Register.db_name;
+import android.database.sqlite.SQLiteDatabase;
+import java.util.ArrayList;
 
-public class PersonalLedger extends AppCompatActivity {
+import edu.fcumselab.lazyzoomoney.dbhelper.PersonalLogTable;
 
+
+public class PersonalLedger extends AppCompatActivity
+{
+    PersonalLogTable pltable;
     SQLiteDatabase db;
     TextView test_txv;
+    ListView record;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.personal_ledger);
 
-        test_txv = (TextView) findViewById(R.id.tset_txv);
+        test_txv = (TextView) findViewById(R.id.test_txv);
+        ListView record = this.findViewById(R.id.record);
+        ArrayList<String> record_list = new ArrayList<String>();
 
-        db = openOrCreateDatabase(db_name, Context.MODE_PRIVATE, null);
+        pltable = new PersonalLogTable(this);
+        db = pltable.db;
+
         Cursor c = db.rawQuery("SELECT * FROM " + "Personal_Log",null);
+
         if(c.moveToFirst() && c.getCount() != 0)
         {
             String str = "總共有" + c.getCount() + "筆資料\n";
             str += "-----\n";
 
-            do{
-                str += "money: " + c.getString(0) + "\n";
-                str += "item: " + c.getString(1) + "\n";
-                str += "wallet: " + c.getString(2) + "\n";
-                str += "ledger: " + c.getString(3) + "\n";
-                str += "category: " + c.getString(4) + "\n";
-            }while(c.moveToNext());
+            while(c.moveToFirst() && c.getCount() != 0)
+            {
+                str += "money: " + c.getString(0) + " ";
+                str += "item: " + c.getString(1) + " ";
+                str += "wallet: " + c.getString(2) + " ";
+                str += "ledger: " + c.getString(3) + " ";
+                str += "category: " + c.getString(4) + " ";
+                record_list.add(str);
+            }
             test_txv.setText(str);
-
-
+            ArrayAdapter<String> addrecord = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, record_list);
+            record.setAdapter(addrecord);
         }
     }
 

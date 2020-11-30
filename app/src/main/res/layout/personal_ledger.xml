@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tset_txv"
+        android:id="@+id/test_txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
@@ -41,4 +41,12 @@
         android:text="新增"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/record"
+        android:layout_width="266dp"
+        android:layout_height="511dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="204dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

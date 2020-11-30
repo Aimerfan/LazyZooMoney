@@ -1,25 +1,25 @@
 package edu.fcumselab.lazyzoomoney;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.fcumselab.lazyzoomoney.dbhelper.WalletTable;
+import android.database.sqlite.SQLiteDatabase;
+
 public class Wallet extends AppCompatActivity// implements WalletAdapter.OnItemClickListener, WalletAdapter.OnItemLongClickListener
 {
-    private static final String db_name = "LazyZooMoney.db";
-    private static final String tb_name = "Wallet";
-    SQLiteDatabase db;
+    private WalletTable wallets;
+    private SQLiteDatabase db;
 
     private final List<WalletEntity>walletList = new ArrayList<>();
     //private RecyclerView mRecyclerView = null;
@@ -31,13 +31,8 @@ public class Wallet extends AppCompatActivity// implements WalletAdapter.OnItemC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wallet);
 
-        db = openOrCreateDatabase(db_name, Context.MODE_PRIVATE, null);
-        String sql = "CREATE TABLE IF NOT EXISTS " + tb_name
-                + "(Kind CHAR(10)," +
-                "Name CHAR(30)," +
-                "Money INT," +
-                "Comment VARCHAR(256));";
-        db.execSQL(sql);
+        wallets = new WalletTable(this);
+        db = wallets.db;
 
         initWallets();  // 將資料表wallet內容匯入
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
@@ -59,7 +54,7 @@ public class Wallet extends AppCompatActivity// implements WalletAdapter.OnItemC
        查詢資料表 Wallet, 顯示所有錢包的資訊 */
     private void initWallets()
     {
-        Cursor c = db.rawQuery("SELECT * FROM " + tb_name, null);
+        Cursor c = db.rawQuery("SELECT * FROM " + WalletTable.TB_NAME, null);
         //String sql = "SELECT count(*) from " + tb_name + ";";
         int num = c.getCount(); // 得到 tuples 數量 (?)
         c.moveToFirst();
