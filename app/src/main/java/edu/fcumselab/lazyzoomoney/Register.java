@@ -1,7 +1,7 @@
 package edu.fcumselab.lazyzoomoney;
 
+
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,12 +11,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import edu.fcumselab.lazyzoomoney.dbhelper.AccountTable;
 
 public class Register extends AppCompatActivity
 {
 
-    static final String db_name = "LazyZooMoney.db";
-    static final String tb_name = "Account";
+    AccountTable accounts;
     SQLiteDatabase db;
 
     EditText usernameR, passwordR, email;
@@ -32,10 +32,8 @@ public class Register extends AppCompatActivity
         email = (EditText) findViewById(R.id.email); // 信箱
         tos = Toast.makeText(this, "", Toast.LENGTH_SHORT); // 提醒框
 
-        db = openOrCreateDatabase(db_name, Context.MODE_PRIVATE, null);
-        String createTable = "CREATE TABLE IF NOT EXISTS " + tb_name + "(account VARCHAR(16), " + "password VARCHAR(16),"  + "email VARCHAR(64))"; // 建立資料表欄位
-        db.execSQL(createTable);
-
+        accounts = new AccountTable(this);
+        db = accounts.db;
     }
 
     private void addData(String account, String password, String email) // 將資料加入資料表
@@ -54,7 +52,8 @@ public class Register extends AppCompatActivity
     {
         String pattern = "^.*@gmail.com$"; // 判斷是否為信箱格式
         int flag = 0;
-        Cursor c = db.rawQuery("SELECT * FROM " + tb_name, null); // 搜尋資料表內容
+        // 搜尋資料表內容
+        Cursor c = db.rawQuery("SELECT * FROM " + AccountTable.TB_NAME, null);
         if(usernameR.getText().toString().isEmpty())
         {
             tos.setText("用戶名為必填欄位");
@@ -109,7 +108,7 @@ public class Register extends AppCompatActivity
         if(flag == 3)
         {
             addData(usernameR.getText().toString(), passwordR.getText().toString(), email.getText().toString()); // 加入資料表
-            c = db.rawQuery("SELECT * FROM " + tb_name, null);
+            c = db.rawQuery("SELECT * FROM " + AccountTable.TB_NAME, null);
             /*if(c.getCount() == 0)
             {
                 addData(usernameR.getText().toString(), passwordR.getText().toString(), email.getText().toString());

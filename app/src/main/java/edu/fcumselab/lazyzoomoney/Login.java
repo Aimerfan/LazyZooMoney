@@ -1,6 +1,6 @@
 package edu.fcumselab.lazyzoomoney;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,8 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static edu.fcumselab.lazyzoomoney.Register.db_name;
-import static edu.fcumselab.lazyzoomoney.Register.tb_name;
+import edu.fcumselab.lazyzoomoney.dbhelper.AccountTable;
 
 public class Login extends AppCompatActivity {
 
@@ -28,13 +27,12 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        db = openOrCreateDatabase("User", Context.MODE_PRIVATE, null);
-
         tos2 = Toast.makeText(this, "", Toast.LENGTH_SHORT);
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
-        db = openOrCreateDatabase(db_name, Context.MODE_PRIVATE, null);
         txv = (TextView) findViewById(R.id.txv);
+
+        db = new AccountTable(this).db;
         showAccount();
     }
 

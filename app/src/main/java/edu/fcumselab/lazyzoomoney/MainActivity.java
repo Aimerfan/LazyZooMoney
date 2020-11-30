@@ -1,21 +1,15 @@
 package edu.fcumselab.lazyzoomoney;
 
+
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.facebook.stetho.Stetho;
 
-import static edu.fcumselab.lazyzoomoney.Register.db_name;
-
 public class MainActivity extends AppCompatActivity
 {
-    private Button btn_login;
-    private Button btn_register;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

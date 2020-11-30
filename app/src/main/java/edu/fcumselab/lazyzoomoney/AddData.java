@@ -1,7 +1,6 @@
 package edu.fcumselab.lazyzoomoney;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import static edu.fcumselab.lazyzoomoney.Register.db_name;
+import edu.fcumselab.lazyzoomoney.dbhelper.PersonalLogTable;
 
 public class AddData extends AppCompatActivity {
 
@@ -31,9 +30,7 @@ public class AddData extends AppCompatActivity {
 
         tos = Toast.makeText(this, "", Toast.LENGTH_SHORT);
 
-        db = openOrCreateDatabase(db_name, Context.MODE_PRIVATE, null); // 開啟資料表
-        String createTable = "CREATE TABLE IF NOT EXISTS " + "Personal_Log" + "(Money INTEGER, " + "Item VARCHAR(10),"  + "Wallet VARCHAR(10)," + "Ledger VARCHAR(5)," + "Category VARCHAR(10) )";
-        db.execSQL(createTable);
+        db = new PersonalLogTable(this).db;
     }
 
     private void addData(int money, String item, String wallet, String ledger, String category)
