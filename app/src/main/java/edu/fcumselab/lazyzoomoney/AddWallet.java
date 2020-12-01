@@ -1,6 +1,7 @@
 package edu.fcumselab.lazyzoomoney;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -58,5 +59,7 @@ public class AddWallet extends AppCompatActivity
         wallets.insert(kind, name, initMoney, comment);
 
         clearR();
+        Intent it = new Intent(this, Wallet.class);
+        startActivity(it);
     }
 }

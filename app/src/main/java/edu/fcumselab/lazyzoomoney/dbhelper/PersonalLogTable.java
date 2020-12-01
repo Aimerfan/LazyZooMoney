@@ -1,6 +1,7 @@
 package edu.fcumselab.lazyzoomoney.dbhelper;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -42,7 +43,15 @@ public class PersonalLogTable
         db.close();
     }
 
-    public void insert()
+    public void insert(int Money, String Item, String Wallet, String Ledger, String Category)
     {
+        ContentValues cv = new ContentValues();
+        cv.put(MONEY_COLUMN, Money);
+        cv.put(ITEM_COLUMN, Item);
+        cv.put(WALLET_COLUMN, Wallet);
+        cv.put(LEDGER_COLUMN, Ledger);
+        cv.put(CATEGORY_COLUMN, Category);
+
+        db.insert(TB_NAME, null, cv);
     }
 }

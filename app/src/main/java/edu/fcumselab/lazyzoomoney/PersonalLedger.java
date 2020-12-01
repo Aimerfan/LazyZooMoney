@@ -63,4 +63,10 @@ public class PersonalLedger extends AppCompatActivity
         startActivity(it);
     }
 
+    public void btn_wallet(View v)
+    {
+        Intent it = new Intent(this, Wallet.class);
+        startActivity(it);
+    }
+
 }

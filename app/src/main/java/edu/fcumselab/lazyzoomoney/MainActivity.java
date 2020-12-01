@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
         startActivity(it);
     }
 
-    // 點選 "錢包" 開啟我的錢包 (測試用)
+    /*// 點選 "錢包" 開啟我的錢包 (測試用)
     public void btn_wallet(View v)
     {
         Intent it = new Intent(this, Wallet.class);
@@ -44,5 +44,5 @@ public class MainActivity extends AppCompatActivity
     {
         Intent it = new Intent(this, AddWallet.class);
         startActivity(it);
-    }
+    }*/
 }
