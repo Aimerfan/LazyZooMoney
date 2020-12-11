@@ -36,7 +36,7 @@ public class Register extends AppCompatActivity
         db = accounts.db;
     }
 
-    private void addData(String account, String password, String email) // 將資料加入資料表
+    /*private void addData(String account, String password, String email) // 將資料加入資料表
     {
         ContentValues cv = new ContentValues(3);
         cv.put("account", account);
@@ -46,7 +46,7 @@ public class Register extends AppCompatActivity
 
         db.insert("Account", null, cv); // 插入資料
 
-    }
+    }*/
 
     public void registerbutton(View v) // 註冊按鈕
     {
@@ -107,7 +107,8 @@ public class Register extends AppCompatActivity
         }
         if(flag == 3)
         {
-            addData(usernameR.getText().toString(), passwordR.getText().toString(), email.getText().toString()); // 加入資料表
+            //addData(usernameR.getText().toString(), passwordR.getText().toString(), email.getText().toString()); // 加入資料表
+            accounts.insert(usernameR.getText().toString(), passwordR.getText().toString(), email.getText().toString());
             c = db.rawQuery("SELECT * FROM " + AccountTable.TB_NAME, null);
             /*if(c.getCount() == 0)
             {

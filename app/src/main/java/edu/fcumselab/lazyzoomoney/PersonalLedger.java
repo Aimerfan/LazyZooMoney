@@ -15,6 +15,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 import edu.fcumselab.lazyzoomoney.dbhelper.PersonalLogTable;
+import edu.fcumselab.lazyzoomoney.dbhelper.WalletTable;
 
 
 public class PersonalLedger extends AppCompatActivity
@@ -34,27 +35,7 @@ public class PersonalLedger extends AppCompatActivity
 
         pltable = new PersonalLogTable(this);
         db = pltable.db;
-
-        Cursor c = db.rawQuery("SELECT * FROM " + "Personal_Log",null);
-
-        if(c.moveToFirst() && c.getCount() != 0)
-        {
-            String str = "總共有" + c.getCount() + "筆資料\n";
-            str += "-----\n";
-
-            while(c.moveToFirst() && c.getCount() != 0)
-            {
-                str += "money: " + c.getString(0) + " ";
-                str += "item: " + c.getString(1) + " ";
-                str += "wallet: " + c.getString(2) + " ";
-                str += "ledger: " + c.getString(3) + " ";
-                str += "category: " + c.getString(4) + " ";
-                record_list.add(str);
-            }
-            test_txv.setText(str);
-            ArrayAdapter<String> addrecord = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, record_list);
-            record.setAdapter(addrecord);
-        }
+        showLog();
     }
 
     public void plus(View v)
@@ -67,6 +48,24 @@ public class PersonalLedger extends AppCompatActivity
     {
         Intent it = new Intent(this, Wallet.class);
         startActivity(it);
+    }
+
+    private void showLog() {
+        Cursor c = db.rawQuery("SELECT * FROM " + PersonalLogTable.TB_NAME, null);
+        if (c.moveToFirst()) {
+            String str = "總共有" + c.getCount() + "筆資料\n";
+            str += "-----\n";
+
+            do {
+                str += "money: " + c.getString(0) + "\n";
+                str += "item: " + c.getString(1) + "\n";
+                str += "wallet: " + c.getString(2) + "\n";
+                str += "ledger: " + c.getString(3) + "\n";
+                str += "category: " + c.getString(4) + "\n";
+            } while (c.moveToNext());
+
+            test_txv.setText(str);
+        }
     }
 
 }

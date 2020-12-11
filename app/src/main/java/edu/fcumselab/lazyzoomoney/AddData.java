@@ -17,6 +17,7 @@ public class AddData extends AppCompatActivity {
     SQLiteDatabase db;
     TextView money, item, wallet, ledger, category;
     Toast tos;
+    PersonalLogTable personal_log;
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -30,10 +31,10 @@ public class AddData extends AppCompatActivity {
 
         tos = Toast.makeText(this, "", Toast.LENGTH_SHORT);
 
-        db = new PersonalLogTable(this).db;
+        personal_log = new PersonalLogTable(this);
     }
 
-    private void addData(int money, String item, String wallet, String ledger, String category)
+    /*private void addData(int money, String item, String wallet, String ledger, String category)
     {
         ContentValues cv = new ContentValues(3);
         cv.put("money", money);
@@ -44,7 +45,7 @@ public class AddData extends AppCompatActivity {
 
         db.insert("Personal_Log", null, cv);
 
-    }
+    }*/
 
     public void addbutton(View v)
     {
@@ -75,7 +76,7 @@ public class AddData extends AppCompatActivity {
         }
         else
         {
-            addData(Integer.parseInt(money.getText().toString()), item.getText().toString(), wallet.getText().toString(), ledger.getText().toString(), category.getText().toString());
+            personal_log.insert(Integer.parseInt(money.getText().toString()), item.getText().toString(), wallet.getText().toString(), ledger.getText().toString(), category.getText().toString());
             tos.setText("新增成功");
             tos.show();
             Intent it = new Intent(this, PersonalLedger.class); // 頁面跳轉
