@@ -15,6 +15,7 @@ public class GroupTable{
 
     // 列出所有 table columns
     private static final String GroupLedgerID = "GroupLedgerID";
+    private static final String Manager = "Manager";
     private static final String UserID = "UserID";
 
 
@@ -22,6 +23,7 @@ public class GroupTable{
     private static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS " + TB_NAME + " (" +
                     GroupLedgerID + " VARCHAR(10)," +
+                    Manager + " VARCHAR(10)," +
                     UserID + " VARCHAR(100)" +  ");";
 
     public SQLiteDatabase db;
@@ -37,11 +39,12 @@ public class GroupTable{
         db.close();
     }
 
-    public void insert(String GroupID, String ID)
+    public void insert(String GroupID, String manager, String ID)
     {
         ContentValues cv = new ContentValues();
         cv.put(GroupLedgerID, GroupID);
         cv.put(UserID, ID);
+        cv.put(Manager, manager);
 
         db.insert(TB_NAME, null, cv);
     }

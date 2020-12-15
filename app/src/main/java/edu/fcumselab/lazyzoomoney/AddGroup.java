@@ -62,7 +62,8 @@ public class AddGroup extends AppCompatActivity {
         if(!("".equals(member4.getText().toString().trim())))
             member = member + "," + member4.getText().toString();
         //member = member1.getText().toString() + "," + member2.getText().toString() + "," + member3.getText().toString() + "," + member4.getText().toString();
-        group.insert(groupid.getText().toString(), member);
+        member = member + "," + username_login;
+        group.insert(groupid.getText().toString(), username_login, member);
 
         Intent it = new Intent(this, Group.class);
         it.putExtra("account", username_login);

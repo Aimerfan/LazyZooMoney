@@ -58,7 +58,7 @@ public class Group extends AppCompatActivity {
 
             do {
                 int flag = 0;
-                String temp[] = c.getString(1).split(",");
+                String temp[] = c.getString(2).split(",");
                 for(int i = 0; i < temp.length; i++)
                 {
                     if(temp[i].equals(username_login))
@@ -67,7 +67,8 @@ public class Group extends AppCompatActivity {
                 if(flag == 1)
                 {
                     str += "GroupLedgerID: " + c.getString(0) + "\n";
-                    str += "UserID: " + c.getString(1) + "\n";
+                    str += "Manager: " + c.getString(1) + "\n";
+                    str += "UserID: " + c.getString(2) + "\n";
                 }
 
             } while (c.moveToNext());
