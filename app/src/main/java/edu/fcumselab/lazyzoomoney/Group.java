@@ -52,12 +52,24 @@ public class Group extends AppCompatActivity {
         Cursor c = db.rawQuery("SELECT * FROM " + GroupTable.TB_NAME, null);
         //c.moveToFirst();
         if (c.moveToFirst()) {
-            String str = "總共有" + c.getCount() + "筆資料\n";
-            str += "-----\n";
+            //String str = "總共有" + c.getCount() + "筆資料\n";
+            String str = "";
+
 
             do {
-                str += "GroupLedgerID: " + c.getString(0) + "\n";
-                str += "UserID: " + c.getString(1) + "\n";
+                int flag = 0;
+                String temp[] = c.getString(1).split(",");
+                for(int i = 0; i < temp.length; i++)
+                {
+                    if(temp[i].equals(username_login))
+                        flag = 1;
+                }
+                if(flag == 1)
+                {
+                    str += "GroupLedgerID: " + c.getString(0) + "\n";
+                    str += "UserID: " + c.getString(1) + "\n";
+                }
+
             } while (c.moveToNext());
 
             txv.setText(str);

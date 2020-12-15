@@ -53,13 +53,13 @@ public class AddGroup extends AppCompatActivity {
     {
         String member = null;
 
-        if(member1.getText().toString() != null)
+        if(!("".equals(member1.getText().toString().trim())))  // "".equals(member1.getText().toString().trim()) 判斷EditText是否為空
             member = member1.getText().toString();
-        if(member2.getText().toString() != null)
+        if(!("".equals(member2.getText().toString().trim())))
             member = member + "," + member2.getText().toString();
-        if(member3.getText().toString() != null)
+        if(!("".equals(member3.getText().toString().trim())))
             member = member + "," + member3.getText().toString();
-        if(member4.getText().toString() != null)
+        if(!("".equals(member4.getText().toString().trim())))
             member = member + "," + member4.getText().toString();
         //member = member1.getText().toString() + "," + member2.getText().toString() + "," + member3.getText().toString() + "," + member4.getText().toString();
         group.insert(groupid.getText().toString(), member);
