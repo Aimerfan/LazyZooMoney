@@ -34,7 +34,7 @@ public class PersonalLedger extends AppCompatActivity
         test_txv = (TextView) findViewById(R.id.test_txv);
 
 
-        Bundle bundle = getIntent().getExtras();
+        Bundle bundle = getIntent().getExtras(); // 利用 Intent 傳遞登入者名稱
         if(bundle.getString("account")!= null)
         {
             username_login = bundle.getString("account");

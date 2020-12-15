@@ -34,7 +34,7 @@ public class AddGroup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_group);
 
-        Bundle bundle = getIntent().getExtras();
+        Bundle bundle = getIntent().getExtras(); // 利用 Intent 傳遞登入者名稱
         if(bundle.getString("account") != null)
             username_login = bundle.getString("account");
 
@@ -57,15 +57,15 @@ public class AddGroup extends AppCompatActivity {
 
     }
 
-    public int SearchAccount(String member)
+    public int SearchAccount(String member) // 判斷輸入是否為已註冊帳號
     {
-        String member_list[] = member.split(",");
-        Cursor c = account_db.rawQuery("SELECT * FROM " + AccountTable.TB_NAME, null);
+        String member_list[] = member.split(","); // 成員名單，利用 , 分割 member
+        Cursor c = account_db.rawQuery("SELECT * FROM " + AccountTable.TB_NAME, null); // 開啟 Account 資料表
         int flag = 1;
         int[] temp; // x is a reference to int[]
         temp = new int[10];
 
-        if(member_list[0].equals("null"))
+        if(member_list[0].equals("null")) // 至少填寫一名成員
         {
             tos.setText("須至少填一名成員");
             tos.show();
@@ -76,7 +76,7 @@ public class AddGroup extends AppCompatActivity {
 
             if(c != null && c.moveToFirst())
             {
-                for(int i = 0; i < member_list.length; i++)
+                for(int i = 0; i < member_list.length; i++) // 判斷成員名單是否都有註冊
                 {
                     temp[i] = 0;
                     do{
@@ -90,7 +90,7 @@ public class AddGroup extends AppCompatActivity {
                     c.moveToFirst();
                 }
             }
-            for(int i = 0; i < member_list.length; i++)
+            for(int i = 0; i < member_list.length; i++) // 找出未註冊成員
             {
                 if(temp[i] == 0)
                 {
@@ -104,11 +104,10 @@ public class AddGroup extends AppCompatActivity {
 
         }
 
-
         return flag;
     }
 
-    public void groupbtn(View v)
+    public void groupbtn(View v) // 新增團體按鈕
     {
         int flag = 0;
         int insert_flag = 0;
@@ -121,7 +120,7 @@ public class AddGroup extends AppCompatActivity {
             flag = 2;
         if(flag == 2)
         {
-            String member = null;
+            String member = null; // 將所有填寫的 EditText 存成字串
             if(!("".equals(member1.getText().toString().trim())))  // "".equals(member1.getText().toString().trim()) 判斷EditText是否為空
                 member = member1.getText().toString();
             if(!("".equals(member2.getText().toString().trim())))
@@ -132,9 +131,9 @@ public class AddGroup extends AppCompatActivity {
                 member = member + "," + member4.getText().toString();
             //member = member1.getText().toString() + "," + member2.getText().toString() + "," + member3.getText().toString() + "," + member4.getText().toString();
             member = member + "," + username_login;
-            insert_flag = SearchAccount(member);
+            insert_flag = SearchAccount(member); // 判斷成員是否註冊
 
-            if(insert_flag == 1)
+            if(insert_flag == 1) // 註冊成功
             {
                 group.insert(groupid.getText().toString(), username_login, member);
                 Intent it = new Intent(this, Group.class);

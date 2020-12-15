@@ -28,7 +28,7 @@ public class Group extends AppCompatActivity {
         setContentView(R.layout.group);
         txv = (TextView) findViewById(R.id.txv);
 
-        Bundle bundle = getIntent().getExtras();
+        Bundle bundle = getIntent().getExtras(); // 利用 Intent 傳遞登入者名稱
         if(bundle.getString("account") != null)
             username_login = bundle.getString("account");
 
@@ -39,7 +39,7 @@ public class Group extends AppCompatActivity {
 
     }
 
-    public void btn_addgroup(View v)
+    public void btn_addgroup(View v) // 新增團體帳本頁面跳轉
     {
         Intent it = new Intent(this, AddGroup.class);
         it.putExtra("account", username_login);
@@ -47,7 +47,7 @@ public class Group extends AppCompatActivity {
 
     }
 
-    private void showLog() {
+    private void showLog() { // 查看團體帳本(僅登入者為成員之帳本)
 
         Cursor c = db.rawQuery("SELECT * FROM " + GroupTable.TB_NAME, null);
         //c.moveToFirst();
@@ -59,7 +59,7 @@ public class Group extends AppCompatActivity {
             do {
                 int flag = 0;
                 String temp[] = c.getString(2).split(",");
-                for(int i = 0; i < temp.length; i++)
+                for(int i = 0; i < temp.length; i++) // 判斷是否為登入者的帳本
                 {
                     if(temp[i].equals(username_login))
                         flag = 1;
