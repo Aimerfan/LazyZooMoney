@@ -24,12 +24,19 @@ public class PersonalLedger extends AppCompatActivity
     SQLiteDatabase db;
     TextView test_txv;
     ListView record;
+    String username_login = null;
+
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.personal_ledger);
 
         test_txv = (TextView) findViewById(R.id.test_txv);
+        Bundle bundle = getIntent().getExtras();
+        if(bundle.getString("account") != null)
+            username_login = bundle.getString("account");
+
+        test_txv.setText(username_login);
         ListView record = this.findViewById(R.id.record);
         ArrayList<String> record_list = new ArrayList<String>();
 
@@ -48,6 +55,14 @@ public class PersonalLedger extends AppCompatActivity
     {
         Intent it = new Intent(this, Wallet.class);
         startActivity(it);
+    }
+
+    public void btn_group(View v)
+    {
+        Intent it = new Intent(this, Group.class);
+        it.putExtra("account", username_login);
+        startActivity(it);
+
     }
 
     private void showLog() {

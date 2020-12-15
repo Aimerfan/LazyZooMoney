@@ -77,7 +77,7 @@ public class Login extends AppCompatActivity {
         {
             Intent it = new Intent(this, PersonalLedger.class);
             it.setClass(Login.this, PersonalLedger.class);
-            it.putExtra("使用者", username_login);
+            it.putExtra("account", username_login);
 
             startActivity(it);
             db.close();
