@@ -20,8 +20,8 @@
 
     <TextView
         android:id="@+id/txv"
-        android:layout_width="149dp"
-        android:layout_height="136dp"
+        android:layout_width="242dp"
+        android:layout_height="477dp"
         android:layout_marginStart="43dp"
         android:layout_marginLeft="43dp"
         android:layout_marginTop="43dp"
@@ -36,6 +36,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="81dp"
+        android:onClick="btn_addgroup"
         android:text="新增團體"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

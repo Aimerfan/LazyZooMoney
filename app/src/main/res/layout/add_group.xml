@@ -7,17 +7,52 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="173dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginRight="73dp"
+        android:id="@+id/member4"
+        android:layout_width="164dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="82dp"
+        android:layout_marginRight="82dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/member3" />
+
+    <EditText
+        android:id="@+id/member3"
+        android:layout_width="164dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/member2" />
+
+    <EditText
+        android:id="@+id/member2"
+        android:layout_width="164dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/member1" />
+
+    <EditText
+        android:id="@+id/member1"
+        android:layout_width="164dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/groupid" />
 
     <TextView
         android:id="@+id/textView20"
@@ -56,15 +91,26 @@
         app:layout_constraintTop_toBottomOf="@+id/add" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/groupid"
         android:layout_width="173dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="135dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginRight="73dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginRight="72dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/groupbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="270dp"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="91dp"
+        android:onClick="groupbtn"
+        android:text="確認"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/member4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,11 +32,17 @@ public class PersonalLedger extends AppCompatActivity
         setContentView(R.layout.personal_ledger);
 
         test_txv = (TextView) findViewById(R.id.test_txv);
-        Bundle bundle = getIntent().getExtras();
-        if(bundle.getString("account") != null)
-            username_login = bundle.getString("account");
 
-        test_txv.setText(username_login);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle.getString("account")!= null)
+        {
+            username_login = bundle.getString("account");
+            test_txv.setText(username_login);
+        }
+
+
+
         ListView record = this.findViewById(R.id.record);
         ArrayList<String> record_list = new ArrayList<String>();
 

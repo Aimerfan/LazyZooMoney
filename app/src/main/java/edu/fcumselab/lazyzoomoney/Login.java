@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import edu.fcumselab.lazyzoomoney.dbhelper.AccountTable;
+import edu.fcumselab.lazyzoomoney.dbhelper.WalletTable;
 
 public class Login extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class Login extends AppCompatActivity {
     TextView txv;
     String username_login = "";
     SQLiteDatabase db;
+    private AccountTable accounttable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,16 +34,18 @@ public class Login extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         txv = (TextView) findViewById(R.id.txv);
 
-        db = new AccountTable(this).db;
+        accounttable = new AccountTable(this);
+        db = accounttable.db;
+
         showAccount();
     }
 
     public void loginbutton(View v)
     {
         int flag = 0;
-        Cursor c = db.rawQuery("SELECT * FROM " + "Account", null);
+        Cursor c = db.rawQuery("SELECT * FROM " + AccountTable.TB_NAME, null);
         String password_temp = "";
-        if(c.moveToFirst())
+        if(c != null && c.moveToFirst())
         {
             do{
                 if(c.getString(0).equals(username.getText().toString()))
@@ -76,11 +80,11 @@ public class Login extends AppCompatActivity {
         if(flag == 5)
         {
             Intent it = new Intent(this, PersonalLedger.class);
-            it.setClass(Login.this, PersonalLedger.class);
+            //it.setClass(Login.this, PersonalLedger.class);
             it.putExtra("account", username_login);
 
             startActivity(it);
-            db.close();
+            //db.close();
 
         }
     }

@@ -22,7 +22,7 @@ public class GroupTable{
     private static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS " + TB_NAME + " (" +
                     GroupLedgerID + " VARCHAR(10)," +
-                    UserID + " VARCHAR(10)" +  ");";
+                    UserID + " VARCHAR(100)" +  ");";
 
     public SQLiteDatabase db;
 
@@ -37,11 +37,11 @@ public class GroupTable{
         db.close();
     }
 
-    public void insert(String GroupLedgerID, String UserID)
+    public void insert(String GroupID, String ID)
     {
         ContentValues cv = new ContentValues();
-        cv.put(GroupLedgerID, GroupLedgerID);
-        cv.put(UserID, UserID);
+        cv.put(GroupLedgerID, GroupID);
+        cv.put(UserID, ID);
 
         db.insert(TB_NAME, null, cv);
     }

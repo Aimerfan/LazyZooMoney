@@ -34,6 +34,7 @@ public class Register extends AppCompatActivity
 
         accounts = new AccountTable(this);
         db = accounts.db;
+
     }
 
     /*private void addData(String account, String password, String email) // 將資料加入資料表
