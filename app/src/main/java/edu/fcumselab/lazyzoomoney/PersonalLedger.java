@@ -53,18 +53,22 @@ public class PersonalLedger extends AppCompatActivity
 
         pltable = new PersonalLogTable(this);
         db = pltable.db;
-        showLog();
+
         txv_output.setText(Integer.toString(CountMoney("支出")));
         txv_input.setText(Integer.toString(CountMoney("收入")));
 
         output = CountMoney("支出");
+
+        showLog();
+
+
+
     }
 
     public void plus(View v)
     {
         Intent it = new Intent(this, AddData.class);
         it.putExtra("account", username_login);
-        startActivity(it);
         startActivity(it);
     }
 
@@ -82,7 +86,7 @@ public class PersonalLedger extends AppCompatActivity
 
     }
 
-    private void showLog() {
+    public void showLog() {
         Cursor c = db.rawQuery("SELECT * FROM " + PersonalLogTable.TB_NAME, null);
         if (c.moveToFirst()) {
             String str = "";
@@ -100,9 +104,10 @@ public class PersonalLedger extends AppCompatActivity
                 str += "category: " + c.getString(5) + "\n";
 
             } while (c.moveToNext());
-
             txv_list.setText(str);
+
         }
+
     }
 
     public int CountMoney(String type)
@@ -118,11 +123,29 @@ public class PersonalLedger extends AppCompatActivity
 
             } while (c.moveToNext());
 
-            //txv_list.setText(str);
+            txv_list.setText(str);
         }
+
 
         return total;
 
     }
+
+    /*public void SearchWallet()
+    {
+        Cursor c = wallet_db.rawQuery("SELECT * FROM " + WalletTable.TB_NAME, null);
+        int money = 0;
+        if (c.moveToFirst()) {
+
+
+            do {
+                money = Integer.parseInt(c.getString(0));
+
+            } while (c.moveToNext());
+
+            txv_total.setText(Integer.toString(money));
+        }
+
+    }*/
 
 }

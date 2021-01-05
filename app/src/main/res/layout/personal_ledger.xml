@@ -68,7 +68,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="33dp"
@@ -88,7 +88,7 @@
         android:layout_marginTop="32dp"
         android:text="TextView"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintStart_toEndOf="@+id/ID"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -123,7 +123,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/ID" />
 
     <TextView
         android:id="@+id/txv_input"

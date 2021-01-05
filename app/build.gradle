@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
 }
 
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -26,6 +27,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {
@@ -42,19 +44,27 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:29.0.0'
     implementation 'com.facebook.stetho:stetho:1.5.1'
 
+    /*appium*/
+    testImplementation 'io.appium:java-client:5.0.1'
+    /*appium*/
+
     //implementation 'com.github.appium:java-client:5.0.1'
     //implementation 'io.appium:java-client:5.0.1'
     //androidTestImplementation 'io.appium:java-client:5.0.1'
-    testImplementation 'io.appium:java-client:5.0.1'
     //testImplementation group: 'io.appium', name: 'java-client', version: '5.0.1'
 
     /*test*/
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-
     /*test*/
 
 
 }
+
+task hello {
+    println " hello "
+}
+
+
+

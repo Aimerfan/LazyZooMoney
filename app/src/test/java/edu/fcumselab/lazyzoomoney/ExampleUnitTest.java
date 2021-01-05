@@ -16,6 +16,7 @@ public class ExampleUnitTest {
     public PersonalLedger TestCase;
 
     /*本地測試不隨模擬器變化*/
+    // gradlew clean test
     /*@Test
     public void MoneyCount_test()
     {
@@ -39,7 +40,7 @@ public class ExampleUnitTest {
         //onView(withId(R.id.txv_username))
             //    .perform(typeText(STRING_TO_BE_TYPED),closeSoftKeyboard());
     }
-
+    //
     /*@Before
     public void setUp() throws MalformedURLException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();

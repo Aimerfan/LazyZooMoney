@@ -32,24 +32,27 @@ public class ExampleInstrumentedTest {
 
     @Test
     /*Espresso 自動化測試*/
-    /*public void test()
+    // gradlew connectedAndroidTest
+    public void test()
     {
         onView(withId(R.id.btn_login)).perform(click());
-        onView(withId(R.id.username)).perform(typeText("test3"));
-        onView(withId(R.id.password)).perform(typeText("test3"));
+        onView(withId(R.id.username)).perform(typeText("test"));
+        onView(withId(R.id.password)).perform(typeText("test"));
         onView(withId(R.id.button)).perform(click());
-
-    }*/
+        onView(withId(R.id.plus)).perform(click());
+    }
     /*Espresso 自動化測試*/
 
-    public void test2()
-    {
-        onView(withId(R.id.btn_login)).perform(click());
-        onView(withId(R.id.username)).perform(typeText("test3"));
-        onView(withId(R.id.password)).perform(typeText("test3"));
-        onView(withId(R.id.button)).perform(click());
+   // public void test2()
+   // {
+        //onView(withId(R.id.btn_login)).perform(click());
+        /*onView(withId(R.id.username)).perform(typeText("test"));
+        onView(withId(R.id.password)).perform(typeText("test"));
+        onView(withId(R.id.button)).perform(click());*/
 
-    }
+   // }
+
+
 
 
 }
