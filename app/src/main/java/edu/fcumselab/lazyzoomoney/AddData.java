@@ -1,6 +1,5 @@
 package edu.fcumselab.lazyzoomoney;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -10,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import edu.fcumselab.lazyzoomoney.dbhelper.PersonalLogTable;
 
 public class AddData extends AppCompatActivity {
@@ -18,10 +18,15 @@ public class AddData extends AppCompatActivity {
     TextView money, item, wallet, ledger, category;
     Toast tos;
     PersonalLogTable personal_log;
+    String username_login = "";
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_data);
+
+        Bundle bundle = getIntent().getExtras(); // 利用 Intent 傳遞登入者名稱
+        if(bundle.getString("account")!= null)
+            username_login = bundle.getString("account");
 
         money = (EditText) findViewById(R.id.money);
         item = (EditText) findViewById(R.id.item);
@@ -76,10 +81,11 @@ public class AddData extends AppCompatActivity {
         }
         else
         {
-            personal_log.insert(Integer.parseInt(money.getText().toString()), item.getText().toString(), wallet.getText().toString(), ledger.getText().toString(), category.getText().toString());
+            personal_log.insert(username_login, Integer.parseInt(money.getText().toString()), item.getText().toString(), wallet.getText().toString(), ledger.getText().toString(), category.getText().toString());
             tos.setText("新增成功");
             tos.show();
             Intent it = new Intent(this, PersonalLedger.class); // 頁面跳轉
+            it.putExtra("account", username_login);
             startActivity(it);
         }
 

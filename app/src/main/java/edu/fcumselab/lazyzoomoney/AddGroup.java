@@ -14,9 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import edu.fcumselab.lazyzoomoney.dbhelper.AccountTable;
 import edu.fcumselab.lazyzoomoney.dbhelper.GroupTable;
 
-
-import edu.fcumselab.lazyzoomoney.dbhelper.PersonalLogTable;
-
 public class AddGroup extends AppCompatActivity {
 
 
@@ -43,7 +40,7 @@ public class AddGroup extends AppCompatActivity {
         member3 = (EditText) findViewById(R.id.member3);
         member4 = (EditText) findViewById(R.id.member4);
         groupid = (EditText) findViewById(R.id.groupid);
-        test_txv = (TextView) findViewById(R.id.test_txv);
+        test_txv = (TextView) findViewById(R.id.txv_username);
 
         tos = Toast.makeText(this, "", Toast.LENGTH_SHORT);
 

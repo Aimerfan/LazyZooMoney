@@ -41,4 +41,12 @@ dependencies {
     // noinspection GradleCompatible
     implementation 'com.android.support:recyclerview-v7:29.0.0'
     implementation 'com.facebook.stetho:stetho:1.5.1'
+
+    //implementation 'com.github.appium:java-client:5.0.1'
+    //implementation 'io.appium:java-client:5.0.1'
+    //androidTestImplementation 'io.appium:java-client:5.0.1'
+    testImplementation 'io.appium:java-client:5.0.1'
+    //testImplementation group: 'io.appium', name: 'java-client', version: '5.0.1'
+
+
 }

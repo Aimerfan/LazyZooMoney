@@ -115,7 +115,7 @@
         app:layout_constraintTop_toBottomOf="@+id/member4" />
 
     <TextView
-        android:id="@+id/test_txv"
+        android:id="@+id/txv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="51dp"

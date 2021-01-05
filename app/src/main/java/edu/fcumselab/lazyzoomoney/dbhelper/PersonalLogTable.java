@@ -14,6 +14,7 @@ public class PersonalLogTable
     public static final String PK_ID = "_id";
 
     // 列出所有 table columns
+    private static final String USER_LOG = "User";
     private static final String MONEY_COLUMN = "Money";
     private static final String ITEM_COLUMN = "Item";
     private static final String WALLET_COLUMN = "Wallet";
@@ -23,6 +24,7 @@ public class PersonalLogTable
     // 建表語句, 要定義清楚
     private static final String CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS " + TB_NAME + " (" +
+                    USER_LOG + " VARCHAR(20), " +
                     MONEY_COLUMN + " INTEGER," +
                     ITEM_COLUMN + " VARCHAR(10)," +
                     WALLET_COLUMN + " VARCHAR(10)," +
@@ -43,9 +45,10 @@ public class PersonalLogTable
         db.close();
     }
 
-    public void insert(int Money, String Item, String Wallet, String Ledger, String Category)
+    public void insert(String user, int Money, String Item, String Wallet, String Ledger, String Category)
     {
         ContentValues cv = new ContentValues();
+        cv.put(USER_LOG, user);
         cv.put(MONEY_COLUMN, Money);
         cv.put(ITEM_COLUMN, Item);
         cv.put(WALLET_COLUMN, Wallet);
