@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,7 +13,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import edu.fcumselab.lazyzoomoney.dbhelper.AccountTable;
-import edu.fcumselab.lazyzoomoney.dbhelper.WalletTable;
 
 public class Login extends AppCompatActivity {
 
@@ -33,7 +31,6 @@ public class Login extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         txv = (TextView) findViewById(R.id.txv);
-
         accounttable = new AccountTable(this);
         db = accounttable.db;
 

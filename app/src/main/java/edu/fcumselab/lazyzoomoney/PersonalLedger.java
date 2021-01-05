@@ -26,6 +26,7 @@ public class PersonalLedger extends AppCompatActivity
     TextView txv_total;
 
     String username_login = null;
+    public int output = 0;
 
 
     protected void onCreate(Bundle savedInstanceState){
@@ -53,6 +54,10 @@ public class PersonalLedger extends AppCompatActivity
         pltable = new PersonalLogTable(this);
         db = pltable.db;
         showLog();
+        txv_output.setText(Integer.toString(CountMoney("支出")));
+        txv_input.setText(Integer.toString(CountMoney("收入")));
+
+        output = CountMoney("支出");
     }
 
     public void plus(View v)
@@ -87,7 +92,7 @@ public class PersonalLedger extends AppCompatActivity
             do {
                 if(!c.getString(0).equals(username_login))
                     continue;
-                str += "User: " + c.getString(0) + "\n";
+                //str += "User: " + c.getString(0) + "\n";
                 str += "money: " + c.getString(1) + "\n";
                 str += "item: " + c.getString(2) + "\n";
                 str += "wallet: " + c.getString(3) + "\n";
@@ -98,6 +103,26 @@ public class PersonalLedger extends AppCompatActivity
 
             txv_list.setText(str);
         }
+    }
+
+    public int CountMoney(String type)
+    {
+        int total = 0;
+        Cursor c = db.rawQuery("SELECT * FROM " + PersonalLogTable.TB_NAME, null);
+        if (c.moveToFirst()) {
+
+            String str = "";
+            do {
+                if(c.getString(0).equals(username_login) && c.getString(4).equals(type))
+                   total += Integer.parseInt(c.getString(1));
+
+            } while (c.moveToNext());
+
+            //txv_list.setText(str);
+        }
+
+        return total;
+
     }
 
 }

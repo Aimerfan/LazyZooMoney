@@ -1,16 +1,44 @@
 package edu.fcumselab.lazyzoomoney;
 
+import org.junit.Assert;
 import org.junit.Test;
-
-import io.appium.java_client.android.AndroidDriver;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
+
+
 public class ExampleUnitTest {
-    private AndroidDriver driver;
+    //private AndroidDriver driver;
+
+    public PersonalLedger TestCase;
+
+    /*本地測試不隨模擬器變化*/
+    /*@Test
+    public void MoneyCount_test()
+    {
+        TestCase = new PersonalLedger();
+        Assert.assertEquals(TestCase.output, 0);
+        System.out.println("test success");
+
+    }*/
+    /*本地測試不隨模擬器變化*/
+
+    /*@Rule
+    public ActivityTestRule<MainActivity> activityRule =
+            new ActivityTestRule<>(MainActivity.class);*/
+
+    @Test
+    public void MoneyCount_test()
+    {
+        TestCase = new PersonalLedger();
+        Assert.assertEquals(TestCase.output, 0);
+        System.out.println("test success");
+        //onView(withId(R.id.txv_username))
+            //    .perform(typeText(STRING_TO_BE_TYPED),closeSoftKeyboard());
+    }
 
     /*@Before
     public void setUp() throws MalformedURLException {
@@ -27,17 +55,17 @@ public class ExampleUnitTest {
         driver = new AndroidDriver(remoteUrl, desiredCapabilities);
     }*/
 
-    @Test
+    //@Test
     /*public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("edu.fcumselab.lazyzoomoney", appContext.getPackageName());
     }*/
-    public void sampleTest() {
+    /*public void sampleTest() {
 
         //MobileElement el1 = (MobileElement) driver.findElementByClassName("Login");
 
-        /*MobileElement el8 = (MobileElement) driver.findElementById("edu.fcumselab.lazyzoomoney.MainActivity:id/btn_register");
+        MobileElement el8 = (MobileElement) driver.findElementById("edu.fcumselab.lazyzoomoney.MainActivity:id/btn_register");
         el8.click();
         MobileElement el9 = (MobileElement) driver.findElementById("edu.fcumselab.lazyzoomoney.Login:id/usernameR");
         el9.sendKeys("test");*/
@@ -47,13 +75,14 @@ public class ExampleUnitTest {
         el11.sendKeys("test2@gmail.com");
         el11.click();
         MobileElement el12 = (MobileElement) driver.findElementById("edu.fcumselab.lazyzoomoney:id/registerbutton");
-        el12.click();*/
+        el12.click();
 
 
-    }
+    }*/
 
     /*@After
     public void tearDown() {
         driver.quit();
     }*/
 }
+

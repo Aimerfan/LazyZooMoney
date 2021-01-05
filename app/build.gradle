@@ -48,5 +48,13 @@ dependencies {
     testImplementation 'io.appium:java-client:5.0.1'
     //testImplementation group: 'io.appium', name: 'java-client', version: '5.0.1'
 
+    /*test*/
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+    /*test*/
+
 
 }
