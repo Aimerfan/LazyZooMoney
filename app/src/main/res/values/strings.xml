@@ -15,4 +15,20 @@
         <item>600</item>
         <item>900</item>
     </string-array>
+
+    <string-array name="Ledger_arr">
+        <item>支出</item>
+        <item>收入</item>
+    </string-array>
+
+
+    <string-array name="Aategory_arr">
+        <item>食</item>
+        <item>衣</item>
+        <item>住</item>
+        <item>行</item>
+        <item>育</item>
+        <item>樂</item>
+    </string-array>
+
 </resources>

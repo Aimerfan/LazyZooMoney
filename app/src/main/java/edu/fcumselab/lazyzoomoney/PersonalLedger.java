@@ -102,6 +102,7 @@ public class PersonalLedger extends AppCompatActivity
                 str += "wallet: " + c.getString(3) + "\n";
                 str += "ledger: " + c.getString(4) + "\n";
                 str += "category: " + c.getString(5) + "\n";
+                str += "---------------------\n";
 
             } while (c.moveToNext());
             txv_list.setText(str);
