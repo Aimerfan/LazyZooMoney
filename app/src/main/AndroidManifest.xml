@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LazyZooMoney">
+        <activity android:name=".GroupLedger"/>
         <activity android:name=".AddData" />
         <activity android:name=".PersonalLedger" />
         <activity android:name=".Login" />
